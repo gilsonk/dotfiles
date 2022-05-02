@@ -1,0 +1,58 @@
+{
+    // vim: ft=jsonc
+    "bashrc": {
+        "unix": "$HOME/.bashrc",
+        "dos": "$HOME/.bashrc"
+    },
+    "Code/settings.json": {
+        "option": {
+            "1": "Code",
+            "2": "Code - OSS",
+            "3": "VSCodium"
+        },
+        "unix": "$HOME/.config/$option/User/settings.json",
+        "dos": "$APPDATA/$option/User/settings.json"
+    },
+    "Code/keybindings.json": {
+        "option": {
+            "1": "Code",
+            "2": "Code - OSS",
+            "3": "VSCodium"
+        },
+        "unix": "$HOME/.config/$option/User/keybindings.json",
+        "dos": "$APPDATA/Code/$option/keybindings.json"
+    },
+    "tmux.conf": {
+        "unix": "$HOME/.tmux.conf"
+    },
+    "vimrc": {
+        "unix": "$HOME/.vimrc",
+        "dos": "$HOME/_vimrc",
+        "commands": {
+            "unix": [
+                "mkdir -p $HOME/.vim/backup",
+                "mkdir -p $HOME/.vim/undodir",
+                "curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim",
+                "vim -es -u vimrc -i NONE -c 'PlugInstall' -c 'qa'"
+            ],
+            "dos": [
+                "mkdir -p $HOME/vimfiles/backup",
+                "mkdir -p $HOME/vimfiles/undodir",
+                "iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | ni $HOME/vimfiles/autoload/plug.vim -Force",
+                "vim -es -u vimrc -i NONE -c 'PlugInstall' -c 'qa'"
+            ]
+        }
+    },
+    "coc-settings.json": {
+        "unix": "$HOME/.vim/coc-settings.json",
+        "dos": "$HOME/vimfiles/coc-settings.json",
+        "commands": {
+            "unix": [
+                "mkdir -p $HOME/.vim"
+            ],
+            "dos": [
+                "mkdir -p $HOME/vimfiles"
+            ]
+        }
+    }
+}

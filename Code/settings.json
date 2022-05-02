@@ -1,0 +1,440 @@
+{
+    // vim: ft=jsonc
+    // Disable telemetry, if any
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    // Base
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "workbench.preferredDarkColorTheme": "Gruvbox Dark Hard",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.wrapTabs": true,
+    "window.menuBarVisibility": "toggle",
+    "files.autoSave": "off",
+    // Encoding
+    "files.encoding": "utf8",
+    "files.eol": "\n",
+    // Format
+    "files.trimTrailingWhitespace": true,
+    "editor.formatOnSave": false,
+    "editor.formatOnPaste": false,
+    // Fonts
+    "editor.fontFamily": "'DejaVu', 'Consolas', monospace",
+    "editor.fontSize": 14,
+    "editor.fontLigatures": false,
+    "editor.tabSize": 4,
+    // Visual
+    "breadcrumbs.enabled": true,
+    "editor.guides.indentation": true,
+    "editor.guides.highlightActiveIndentation": true,
+    "editor.matchBrackets": "always",
+    "editor.wordWrap": "on",
+    "editor.occurrencesHighlight": false,
+    "editor.renderWhitespace": "trailing",
+    "workbench.colorCustomizations": {
+        "editorWhitespace.foreground": "#FF0000"
+    },
+    "editor.rulers": [
+        80
+    ],
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.scrollbar.vertical": "hidden",
+    "editor.scrollBeyondLastLine": false,
+    "editor.cursorSurroundingLines": 5,
+    "editor.minimap.enabled": false,
+    // Auto close
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingOvertype": "never",
+    "editor.autoClosingQuotes": "never",
+    "editor.autoSurround": "never",
+    // Intelli Sense
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": true
+    },
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    // "editor.quickSuggestionsDelay": 10,
+    // "editor.suggestOnTriggerCharacters": true,
+    // "editor.tabCompletion": "off",
+    // "editor.suggest.localityBonus": false,
+    // "editor.wordBasedSuggestions": true,
+    // "editor.parameterHints.enabled": true,
+    // Python
+    "python.languageServer": "Pylance",
+    "python.formatting.provider": "black",
+    // Vim Settings
+    "vim.easymotion": true,
+    "vim.sneak": false,
+    "vim.surround": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.leader": "<Space>",
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false
+    },
+    // Vim Mappings
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // Workbench actions
+        // Command palette
+        {
+            "before": ["<Leader>", "P"],
+            "commands": ["workbench.action.showCommands"]
+        },
+        // Fuzzy finder
+        {
+            "before": ["<Leader>", "p"],
+            "commands": ["workbench.action.quickOpen"]
+        },
+        // Go to Symbol
+        {
+            "before": ["<Leader>", "t", "s"],
+            "commands": ["workbench.action.gotoSymbol"]
+        },
+        // Run file in terminal
+        {
+            "before": ["<Leader>", "r"],
+            "commands": ["python.execInTerminal"]
+            // "commands": ["workbench.action.terminal.runActiveFile"]
+        },
+        // Navigation
+        {
+            "before": ["<Leader>", "N"],
+            "commands": [
+                // "workbench.view.explorer"
+                // "workbench.view.scm"
+                "workbench.action.toggleActivityBarVisibility",
+                "workbench.action.toggleSidebarVisibility"
+            ]
+        },
+        {
+            "before": ["<Leader>", "T"],
+            "commands": ["workbench.action.togglePanel"]
+        },
+        // VIM remaps
+        // Split lines
+        {
+            "before": ["<Leader>", "K"],
+            "after": ["r", "<CR>", "<Esc>"]
+        },
+        {
+            "before": ["<Leader>", "<Leader>", "K"],
+            "after": ["K"]
+        },
+        // Tab
+        {
+            "before": ["<Tab>"],
+            "after": [">", ">", "_"]
+        },
+        {
+            "before": ["<S-Tab>"],
+            "after": ["<", "<", "_"]
+        },
+        // Remove highlight
+        {
+            "before": ["<Leader>", "n"],
+            "commands": [":nohl"]
+        },
+        // Fold
+        {
+            "before": ["<Leader>", "z"],
+            "commands": ["editor.toggleFold"]
+        },
+        // Split
+        {
+            "before": ["<C-h>"],
+            "after": ["<C-w>", "h"]
+        },
+        {
+            "before": ["<C-j>"],
+            "after": ["<C-w>", "j"]
+        },
+        {
+            "before": ["<C-k>"],
+            "after": ["<C-w>", "k"]
+        },
+        {
+            "before": ["<C-l>"],
+            "after": ["<C-w>", "l"]
+        },
+        // Tab
+        {
+          "before": ["<Leader>", "t", "t"],
+          "commands": [":tabnew"]
+        },
+        {
+          "before": ["<Leader>", "t", "n"],
+          "commands": [":tabnext"]
+        },
+        {
+          "before": ["<Leader>", "t", "p"],
+          "commands": [":tabprev"]
+        },
+        {
+          "before": ["<Leader>", "t", "o"],
+          "commands": [":tabo"]
+        },
+        // Delete to black hole
+        {
+          "before": ["<Leader>", "c"],
+          "after": ["\"", "_", "c"]
+        },
+        {
+          "before": ["<Leader>", "d"],
+          "after": ["\"", "_", "d"]
+        },
+        // Remaps below should be common to Normal, Visual,
+        // and Operator Pending mode
+        // Word wrap
+        {
+            "before": ["j"],
+            "after": ["g", "j"]
+        },
+        {
+            "before": ["k"],
+            "after": ["g", "k"]
+        },
+        // Move faster
+        {
+            "before": ["J"],
+            "after": ["5", "j"]
+        },
+        {
+            "before": ["K"],
+            "after": ["5", "k"]
+        },
+        {
+            "before": ["H"],
+            "after": ["^"]
+        },
+        {
+            "before": ["L"],
+            "after": ["g", "_"]
+        },
+        // Keep Joining lines
+        {
+            "before": ["<Leader>", "J"],
+            "after": ["J"]
+        },
+        // Easymotion remap
+        {
+          "before": ["<Leader>", "h"],
+          "after": ["<Leader>", "<Leader>", "h"]
+        },
+        {
+          "before": ["<Leader>", "j"],
+          "after": ["<Leader>", "<Leader>", "j"]
+        },
+        {
+          "before": ["<Leader>", "k"],
+          "after": ["<Leader>", "<Leader>", "k"]
+        },
+        {
+          "before": ["<Leader>", "l"],
+          "after": ["<Leader>", "<Leader>", "l"]
+        },
+        {
+          "before": ["<Leader>", "s"],
+          "after": ["<Leader>", "<Leader>", "2", "s"]
+        },
+        {
+          "before": ["<Leader>", "w"],
+          "after": ["<Leader>", "<Leader>", "w"]
+        },
+        {
+          "before": ["<Leader>", "b"],
+          "after": ["<Leader>", "<Leader>", "b"]
+        },
+        {
+          "before": ["<Leader>", "e"],
+          "after": ["<Leader>", "<Leader>", "e"]
+        },
+        {
+          "before": ["<Leader>", "/"],
+          "after": ["<Leader>", "<Leader>", "/"]
+        },
+        {
+          "before": ["<Leader>", "a"],
+          "after": ["<Leader>", "<Leader>", "<Leader>", "j"]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        // Indent with Tab
+        {
+            "before": ["<Tab>"],
+            "after": [">", "g", "v"]
+        },
+        {
+            "before": ["<S-Tab>"],
+            "after": ["<", "g", "v"]
+        },
+        // Paste correctly
+        {
+            "before": ["p"],
+            "after": ["p", "g", "v", "y"]
+        },
+        // Remaps below should be common to Normal, Visual,
+        // and Operator Pending mode
+        // Word wrap
+        {
+            "before": ["j"],
+            "after": ["g", "j"]
+        },
+        {
+            "before": ["k"],
+            "after": ["g", "k"]
+        },
+        // Move faster
+        {
+            "before": ["J"],
+            "after": ["5", "j"]
+        },
+        {
+            "before": ["K"],
+            "after": ["5", "k"]
+        },
+        {
+            "before": ["H"],
+            "after": ["^"]
+        },
+        {
+            "before": ["L"],
+            "after": ["g", "_"]
+        },
+        // Keep Joining lines
+        {
+            "before": ["<Leader>", "J"],
+            "after": ["J"]
+        },
+        // Easymotion remap
+        {
+          "before": ["<Leader>", "h"],
+          "after": ["<Leader>", "<Leader>", "h"]
+        },
+        {
+          "before": ["<Leader>", "j"],
+          "after": ["<Leader>", "<Leader>", "j"]
+        },
+        {
+          "before": ["<Leader>", "k"],
+          "after": ["<Leader>", "<Leader>", "k"]
+        },
+        {
+          "before": ["<Leader>", "l"],
+          "after": ["<Leader>", "<Leader>", "l"]
+        },
+        {
+          "before": ["<Leader>", "s"],
+          "after": ["<Leader>", "<Leader>", "2", "s"]
+        },
+        {
+          "before": ["<Leader>", "w"],
+          "after": ["<Leader>", "<Leader>", "w"]
+        },
+        {
+          "before": ["<Leader>", "b"],
+          "after": ["<Leader>", "<Leader>", "b"]
+        },
+        {
+          "before": ["<Leader>", "e"],
+          "after": ["<Leader>", "<Leader>", "e"]
+        },
+        {
+          "before": ["<Leader>", "/"],
+          "after": ["<Leader>", "<Leader>", "/"]
+        },
+        {
+          "before": ["<Leader>", "a"],
+          "after": ["<Leader>", "<Leader>", "<Leader>", "j"]
+        }
+    ],
+    "vim.operatorPendingModeKeyBindingsNonRecursive": [
+        // Remaps below should be common to Normal, Visual,
+        // and Operator Pending mode
+        // Word wrap
+        {
+            "before": ["j"],
+            "after": ["g", "j"]
+        },
+        {
+            "before": ["k"],
+            "after": ["g", "k"]
+        },
+        // Move faster
+        {
+            "before": ["J"],
+            "after": ["5", "j"]
+        },
+        {
+            "before": ["K"],
+            "after": ["5", "k"]
+        },
+        {
+            "before": ["H"],
+            "after": ["^"]
+        },
+        {
+            "before": ["L"],
+            "after": ["g", "_"]
+        },
+        // Keep Joining lines
+        {
+            "before": ["<Leader>", "J"],
+            "after": ["J"]
+        },
+        // Easymotion remap
+        {
+          "before": ["<Leader>", "h"],
+          "after": ["<Leader>", "<Leader>", "h"]
+        },
+        {
+          "before": ["<Leader>", "j"],
+          "after": ["<Leader>", "<Leader>", "j"]
+        },
+        {
+          "before": ["<Leader>", "k"],
+          "after": ["<Leader>", "<Leader>", "k"]
+        },
+        {
+          "before": ["<Leader>", "l"],
+          "after": ["<Leader>", "<Leader>", "l"]
+        },
+        {
+          "before": ["<Leader>", "s"],
+          "after": ["<Leader>", "<Leader>", "2", "s"]
+        },
+        {
+          "before": ["<Leader>", "w"],
+          "after": ["<Leader>", "<Leader>", "w"]
+        },
+        {
+          "before": ["<Leader>", "b"],
+          "after": ["<Leader>", "<Leader>", "b"]
+        },
+        {
+          "before": ["<Leader>", "e"],
+          "after": ["<Leader>", "<Leader>", "e"]
+        },
+        {
+          "before": ["<Leader>", "/"],
+          "after": ["<Leader>", "<Leader>", "/"]
+        },
+        {
+          "before": ["<Leader>", "a"],
+          "after": ["<Leader>", "<Leader>", "<Leader>", "j"]
+        }
+    ],
+    "vim.insertModeKeyBindingsNonRecursive": [
+        // Tab
+        {
+            "before": ["<S-Tab>"],
+            "after": ["C-D"]
+        }
+    ]
+}

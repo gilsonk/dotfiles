@@ -1,0 +1,6 @@
+{
+    // vim: ft=jsonc
+    "diagnostic.displayByAle": true,
+    // Python
+    "python.formatting.provider": "black"
+}
