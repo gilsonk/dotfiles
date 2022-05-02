@@ -54,5 +54,8 @@
                 "mkdir -p $HOME/vimfiles"
             ]
         }
+    },
+    "minttyrc": {
+        "dos": "$HOME/.minttyrc"
     }
 }
