@@ -136,13 +136,29 @@ set wildignore+=*/build/*
 set wildignore+=*/dist/*
 " Git
 set wildignore+=**/.git/*
-" Other files
+" Documents
+set wildignore+=*.pdf
 set wildignore+=*.doc*
+set wildignore+=*.dot*
+set wildignore+=*.pps*
 set wildignore+=*.ppt*
 set wildignore+=*.xls*
+set wildignore+=*.xlt*
+" Pictures
+set wildignore+=*.bmp
+set wildignore+=*.jpg
+set wildignore+=*.jpeg
+set wildignore+=*.png
+set wildignore+=*.svg
+" Archives
+set wildignore+=*.7z
 set wildignore+=*.rar
 set wildignore+=*.zip
 set wildignore+=*.tar.*
+set wildignore+=*.bz
+set wildignore+=*.gz
+" Other
+set wildignore+=*.exe
 
 " CTRLP
 nnoremap <Leader>p :CtrlP<CR>
@@ -212,6 +228,10 @@ nnoremap <Leader>u :UndotreeToggle<CR>
 
 " Python DocString
 let g:pydocstring_formatter = 'google'
+
+" CTRL-A like
+nnoremap <Leader><Leader>a ggVG
+vnoremap <Leader><Leader>a <Esc>ggVG
 
 " CTRL-C in visual mode
 vnoremap <C-c> y

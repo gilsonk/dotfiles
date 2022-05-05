@@ -1,0 +1,4 @@
+# .bash_profile for Git Bash
+# vim: ft=sh
+[[ -f "$HOME/.bashrc" ]] && source "$HOME/.bashrc"
+cd $HOME

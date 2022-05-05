@@ -20,7 +20,7 @@
             "3": "VSCodium"
         },
         "unix": "$HOME/.config/$option/User/keybindings.json",
-        "dos": "$APPDATA/Code/$option/keybindings.json"
+        "dos": "$APPDATA/$option/User/keybindings.json"
     },
     "tmux.conf": {
         "unix": "$HOME/.tmux.conf"
@@ -54,6 +54,9 @@
                 "mkdir -p $HOME/vimfiles"
             ]
         }
+    },
+    "dosbash_profile": {
+        "dos": "$HOME/.bash_profile"
     },
     "minttyrc": {
         "dos": "$HOME/.minttyrc"

@@ -23,19 +23,20 @@ fi
 # Create backup directory
 [[ "$do_backup" == "true" ]] && mkdir -p "${backups}/${today}"
 
-config=$(cat "${config_file}" | sed 's#//[^"]*$##g')
+config=$(cat "${config_file}" | sed 's#//[^"]*$##g' | tr -d '\r')
 
 [[ $(echo $OSTYPE | grep "linux") ]] && is_unix=true || is_unix=false
 
 [[ "$is_unix" == "true" ]] && os_key="unix" || os_key="dos"
 
-for file in $(echo $config | jq 'keys[]'); do
+for file in $(echo $config | jq 'keys[]' | tr -d '\r'); do
     echo ""
     source_file="${dotfiles}/$(echo ${file} | tr -d '\"')"
 
     options=$(
         echo ${config} \
-        | jq -r ".${file}.option"
+        | jq -r ".${file}.option" \
+        | tr -d '\r'
     )
     if [[ "$options" != "null" ]]; then
         echo -e "Which option would you like to choose for ${file}?\n${options}"
@@ -43,7 +44,8 @@ for file in $(echo $config | jq 'keys[]'); do
 
         option=$(
             echo ${config} \
-            | jq -r ".${file}.\"option\".\"${choice}\""
+            | jq -r ".${file}.\"option\".\"${choice}\"" \
+            | tr -d '\r'
         )
 
         target_file=$(
@@ -51,6 +53,7 @@ for file in $(echo $config | jq 'keys[]'); do
             | jq ".${file}.\"${os_key}\"" \
             | sed "s/\$option/${option}/g" \
             | envsubst \
+            | tr -d '\r' \
             | tr -d '\"'
         )
     else
@@ -58,6 +61,7 @@ for file in $(echo $config | jq 'keys[]'); do
             echo ${config} \
             | jq ".${file}.\"${os_key}\"" \
             | envsubst \
+            | tr -d '\r' \
             | tr -d '\"'
         )
     fi
@@ -69,7 +73,9 @@ for file in $(echo $config | jq 'keys[]'); do
     if [[ "$is_unix" == "true" ]]; then
         sym_cmd="ln -s \"${source_file}\" \"${target_file}\""
     else
-        sym_cmd="cmd //c \"mklink \"${target_file}\" \"${source_file}\"\""
+        source_file=$(cygpath -w "${source_file}")
+        target_file=$(cygpath -w "${target_file}")
+        sym_cmd="cmd <<< \"mklink \\\"${target_file}\\\" \\\"${source_file}\\\"\" > /dev/null"
     fi
 
     if [[ -L "$target_file" ]]; then
@@ -94,11 +100,12 @@ for file in $(echo $config | jq 'keys[]'); do
 
     commands=$(
         echo ${config} \
-        | jq -r ".${file}.commands"
+        | jq -r ".${file}.commands" \
+        | tr -d '\r'
     )
     [[ "$commands" == "null" ]] && continue
 
-    for file_cmd in $(echo $config | jq -r ".${file}.\"commands\".\"${os_key}\"[]"); do
+    for file_cmd in $(echo $config | jq -r ".${file}.\"commands\".\"${os_key}\"[]" | tr -d '\r'); do
         echo "Warning: Review command before executing it"
         echo "Do you want to run the following command? It will be passed through eval"
         echo "$file_cmd"

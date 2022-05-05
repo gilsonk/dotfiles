@@ -97,11 +97,11 @@ set_prompt () {
     case "$prompt_type" in
         "-1a")
             local git_branch="$(__git_ps1 ' %s')"
-            PS1=" ${reset}${fg_white_bright}${last_cmd} ${last_result[1]} ${reset}${user_color[0]}\u@\h${reset}:${fg_blue_bright}\w${git_color[0]}${git_branch}${reset}\$ "
+            PS1="${reset}${fg_white_bright}${last_cmd} ${last_result[1]} ${reset}${user_color[0]}\u@\h${reset}:${fg_blue_bright}\w${git_color[0]}${git_branch}${reset}\$ "
             ;;
         "-1b")
             local git_branch="$(__git_ps1 ' %s')"
-            PS1=" ${reset}${fg_white_bright}${last_cmd} ${last_result[0]} ${reset}${user_color[0]}\u@\h${reset}:${fg_blue_bright}\w${git_color[0]}${git_branch}${reset}\$ "
+            PS1="${reset}${fg_white_bright}${last_cmd} ${last_result[0]} ${reset}${user_color[0]}\u@\h${reset}:${fg_blue_bright}\w${git_color[0]}${git_branch}${reset}\$ "
             ;;
         "-2a")
             local git_branch="$(__git_ps1 ' [%s]')"
