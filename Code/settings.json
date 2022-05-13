@@ -8,6 +8,7 @@
     "workbench.preferredDarkColorTheme": "Gruvbox Dark Hard",
     "workbench.iconTheme": "material-icon-theme",
     "workbench.editor.enablePreview": false,
+    "workbench.list.openMode": "doubleClick",
     "workbench.editor.wrapTabs": true,
     "window.menuBarVisibility": "toggle",
     "files.autoSave": "off",
