@@ -92,29 +92,38 @@ set_prompt () {
     # Git
     [[ -z "$(__git_ps1 '%s')" ]] && local git_color=("" "" "") || local git_color=("$fg_red_bright" "$fg_red_dark" "$bg_red")
 
+    # Python
+    [[ -z "$VIRTUAL_ENV" ]] && local python_color=("" "" "") || local python_color=("$fg_magenta_bright" "$fg_magenta_dark" "$bg_magenta")
+
     # Setting PS1
     # Foreground color must come before background color
     case "$prompt_type" in
         "-1a")
             local git_branch="$(__git_ps1 ' %s')"
-            PS1="${reset}${fg_white_bright}${last_cmd} ${last_result[1]} ${reset}${user_color[0]}\u@\h${reset}:${fg_blue_bright}\w${git_color[0]}${git_branch}${reset}\$ "
+            [[ -z "$VIRTUAL_ENV" ]] && local python_env="" || local python_env=" ($(basename ${VIRTUAL_ENV}))"
+            PS1="${reset}${fg_white_bright}${last_cmd} ${last_result[1]} ${reset}${user_color[0]}\u@\h${reset}:${fg_blue_bright}\w${git_color[0]}${git_branch}${python_color[0]}${python_env}${reset}\$ "
             ;;
         "-1b")
             local git_branch="$(__git_ps1 ' %s')"
-            PS1="${reset}${fg_white_bright}${last_cmd} ${last_result[0]} ${reset}${user_color[0]}\u@\h${reset}:${fg_blue_bright}\w${git_color[0]}${git_branch}${reset}\$ "
+            [[ -z "$VIRTUAL_ENV" ]] && local python_env="" || local python_env=" ($(basename ${VIRTUAL_ENV}))"
+            PS1="${reset}${fg_white_bright}${last_cmd} ${last_result[0]} ${reset}${user_color[0]}\u@\h${reset}:${fg_blue_bright}\w${git_color[0]}${git_branch}${python_color[0]}${python_env}${reset}\$ "
             ;;
         "-2a")
             local git_branch="$(__git_ps1 ' [%s]')"
-            PS1="\n${alt_char}l${def_char}[${fg_white_bright}${last_cmd}${reset}]${alt_char}q${def_char}[${last_result[0]}${reset}]${alt_char}q${def_char}[${user_color[0]}\u@\h${reset}]:[${fg_blue_bright}\w${git_color[0]}${git_branch}${reset}]\n${alt_char}mq${def_char}${end_line}${reset} "
+            [[ -z "$VIRTUAL_ENV" ]] && local python_env="" || local python_env=" ($(basename ${VIRTUAL_ENV}))"
+            PS1="\n${alt_char}l${def_char}[${fg_white_bright}${last_cmd}${reset}]${alt_char}q${def_char}[${last_result[0]}${reset}]${alt_char}q${def_char}[${user_color[0]}\u@\h${reset}]:[${fg_blue_bright}\w${git_color[0]}${git_branch}${python_color[0]}${python_env}${reset}]\n${alt_char}mq${def_char}${end_line}${reset} "
             ;;
         "-2b")
             local git_branch="$(__git_ps1 ' %s')"
-            PS1="\n${alt_char}lu${def_char}${fg_white_bright}${last_cmd}${reset}${alt_char}tqu${def_char}${last_result[0]}${reset}${alt_char}tqu${def_char}${user_color[0]}\u@\h${reset}${alt_char}t${def_char}${end_line}${fg_blue_bright} \w${git_color[0]}${git_branch}${reset}\n${alt_char}mq${def_char}${end_line}${reset} "
+            [[ -z "$VIRTUAL_ENV" ]] && local python_env="" || local python_env=" ($(basename ${VIRTUAL_ENV}))"
+            PS1="\n${alt_char}lu${def_char}${fg_white_bright}${last_cmd}${reset}${alt_char}tqu${def_char}${last_result[0]}${reset}${alt_char}tqu${def_char}${user_color[0]}\u@\h${reset}${alt_char}t${def_char}${end_line}${fg_blue_bright} \w${git_color[0]}${git_branch}${python_color[0]}${python_env}${reset}\n${alt_char}mq${def_char}${end_line}${reset} "
             ;;
         "-p")
             local git_branch="$(__git_ps1 ' %s')"
+            [[ -z "$VIRTUAL_ENV" ]] && local python_env="" || local python_env=" $(basename ${VIRTUAL_ENV})"
             [[ -z "$git_branch" ]] && local git_powerline="" || local git_powerline="${fg_white_bright}${git_branch} ${git_color[1]}${sep_right}"
-            PS1="${reset}${fg_white_bright}${last_result[3]} ${last_cmd} ${last_result[2]}${user_color[2]}${sep_right}${fg_white_bright} \u ${user_color[1]}${bg_yellow}${sep_right}${fg_white_bright} \h ${fg_yellow_dark}${bg_blue}${sep_right}${fg_white_bright} \w ${fg_blue_dark}${git_color[2]}${sep_right}${git_powerline}${reset} "
+            [[ -z "$python_env" ]] && local python_powerline="" || local python_powerline="${fg_white_bright}${python_env} ${python_color[1]}${sep_right}"
+            PS1="${reset}${fg_white_bright}${last_result[3]} ${last_cmd} ${last_result[2]}${user_color[2]}${sep_right}${fg_white_bright} \u ${user_color[1]}${bg_yellow}${sep_right}${fg_white_bright} \h ${fg_yellow_dark}${bg_blue}${sep_right}${fg_white_bright} \w ${fg_blue_dark}${git_color[2]}${sep_right}${git_powerline}${python_color[2]}${sep_right}${python_powerline}${reset} "
             ;;
         *)
             PS1="${reset}${user_color[0]}\u@\h${reset}:${fg_blue_bright}\w${reset}\$ "

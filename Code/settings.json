@@ -67,6 +67,10 @@
     // Python
     "python.languageServer": "Pylance",
     "python.formatting.provider": "black",
+    "python.venvPath": "~/.venv",
+    "[python]": {
+        "editor.formatOnSave": true
+    },
     // Vim Settings
     "vim.easymotion": true,
     "vim.sneak": false,
